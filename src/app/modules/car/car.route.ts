@@ -5,5 +5,6 @@ const router = express.Router()
 
 //will call controller
 router.post('/cars', CarControllers.createCar)
+router.get('/cars', CarControllers.getAllCars)
 
 export const CarRoutes = router

@@ -6,6 +6,12 @@ const createCarIntoDB = async (car: Car) => {
   return result
 }
 
+const getAllCarsFromDB = async () => {
+  const result = await CarModel.find()
+  return result
+}
+
 export const CarServices = {
   createCarIntoDB,
+  getAllCarsFromDB,
 }
