@@ -66,14 +66,13 @@ The API will be running at http://localhost:8000
 
 ## API Endpoints
 
-| Method     | Endpoint                        | Description                                    | Request Body (if applicable)                                              |
-| ---------- | ------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------- |
-| **POST**   | `/api/cars`                     | Create a new car                               | `{ brand, model, year, price, category, description, quantity, inStock }` |
-| **GET**    | `/api/cars`                     | Get all cars                                   | N/A                                                                       |
-| **GET**    | `/api/cars?searchTerm=category` | Get cars filtered by brand, model, or category | N/A                                                                       |
-| **GET**    | `/api/cars/:carId`              | Get a single car by ID                         | N/A                                                                       |
-| **PUT**    | `/api/cars/:carId`              | Update car details                             | `{ price, quantity }` (or any other fields)                               |
-| **DELETE** | `/api/cars/:carId`              | Delete a car by ID                             | N/A                                                                       |
+| Method     | Endpoint           | Description            | Request Body (if applicable)                                              |
+| ---------- | ------------------ | ---------------------- | ------------------------------------------------------------------------- |
+| **POST**   | `/api/cars`        | Create a new car       | `{ brand, model, year, price, category, description, quantity, inStock }` |
+| **GET**    | `/api/cars`        | Get all cars           | N/A                                                                       |
+| **GET**    | `/api/cars/:carId` | Get a single car by ID | N/A                                                                       |
+| **PUT**    | `/api/cars/:carId` | Update car details     | `{ price, quantity }` (or any other fields)                               |
+| **DELETE** | `/api/cars/:carId` | Delete a car by ID     | N/A                                                                       |
 
 ### Order Endpoints
 
