@@ -63,14 +63,21 @@ The API will be running at http://localhost:8000
 🛠️ API Endpoints
 
 🔹 Car Management
-Method Endpoint Description
-POST /api/cars Create a new car
-GET /api/cars Get all cars (or filter by brand, model, category)
-GET /api/cars/:carId Get a specific car by ID
-PUT /api/cars/:carId Update car details
-DELETE /api/cars/:carId Delete a car
 
-🔹 Order Management
-Method Endpoint Description
-POST /api/orders Place a new order
-GET /api/orders/revenue Get total revenue from orders
+## API Endpoints
+
+| Method     | Endpoint                        | Description                                    | Request Body (if applicable)                                              |
+| ---------- | ------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------- |
+| **POST**   | `/api/cars`                     | Create a new car                               | `{ brand, model, year, price, category, description, quantity, inStock }` |
+| **GET**    | `/api/cars`                     | Get all cars                                   | N/A                                                                       |
+| **GET**    | `/api/cars?searchTerm=category` | Get cars filtered by brand, model, or category | N/A                                                                       |
+| **GET**    | `/api/cars/:carId`              | Get a single car by ID                         | N/A                                                                       |
+| **PUT**    | `/api/cars/:carId`              | Update car details                             | `{ price, quantity }` (or any other fields)                               |
+| **DELETE** | `/api/cars/:carId`              | Delete a car by ID                             | N/A                                                                       |
+
+### Order Endpoints
+
+| Method   | Endpoint              | Description                             | Request Body (if applicable)           |
+| -------- | --------------------- | --------------------------------------- | -------------------------------------- |
+| **POST** | `/api/orders`         | Place a new car order                   | `{ email, car, quantity, totalPrice }` |
+| **GET**  | `/api/orders/revenue` | Calculate total revenue from all orders | N/A                                    |
