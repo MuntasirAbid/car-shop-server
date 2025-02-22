@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
 import { CarRoutes } from './app/modules/car/car.route'
+import { OrderRoutes } from './app/modules/order/order.routes'
 
 const app: Application = express()
 
@@ -8,11 +9,6 @@ const app: Application = express()
 app.use(express.json())
 app.use(cors())
 
-app.use('/api', CarRoutes)
-
-app.get('/', (req: Request, res: Response) => {
-  const a = 10
-  res.send(a)
-})
+app.use('/api', CarRoutes, OrderRoutes)
 
 export default app
