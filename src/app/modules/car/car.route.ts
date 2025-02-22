@@ -8,5 +8,6 @@ router.post('/cars', CarControllers.createCar)
 router.get('/cars', CarControllers.getAllCars)
 router.get('/cars/:carId', CarControllers.getSingleCar)
 router.delete('/cars/:carId', CarControllers.deleteCarData)
+router.put('/cars/:carId', CarControllers.updateCarData)
 
 export const CarRoutes = router

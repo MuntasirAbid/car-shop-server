@@ -32,9 +32,24 @@ const deleteCarDataFromDB = async (carId: string) => {
   }
 }
 
+//function to update data in DB collection
+const updateCarInDB = async (carId: string, updateData: Partial<Car>) => {
+  try {
+    const result = await CarModel.findByIdAndUpdate(carId, updateData, {
+      new: true,
+      runValidators: true,
+    })
+    return result
+  } catch (error) {
+    console.log(error)
+    throw new Error('Error updating car')
+  }
+}
+
 export const CarServices = {
   createCarIntoDB,
   getAllCarsFromDB,
   getSingleCarFromDB,
   deleteCarDataFromDB,
+  updateCarInDB,
 }
