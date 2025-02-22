@@ -69,8 +69,34 @@ const getSingleCar = async (req: Request, res: Response) => {
   }
 }
 
+const deleteCarData = async (req: Request, res: Response) => {
+  try {
+    const { carId } = req.params
+    const deletedCar = await CarServices.deleteCarDataFromDB(carId)
+
+    if (!deletedCar) {
+      res.status(404).json({
+        message: 'Car cannot found',
+        success: false,
+      })
+    } else
+      res.status(200).json({
+        success: true,
+        message: 'Car data deleted successfully',
+        data: {},
+      })
+  } catch (error) {
+    res.status(500).json({
+      message: 'Error deleting car',
+      success: false,
+      error: Error,
+    })
+  }
+}
+
 export const CarControllers = {
   createCar,
   getAllCars,
   getSingleCar,
+  deleteCarData,
 }

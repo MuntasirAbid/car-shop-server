@@ -28,7 +28,7 @@ const deleteCarDataFromDB = async (carId: string) => {
     const result = await CarModel.findByIdAndDelete(carId)
     return result
   } catch (error) {
-    console.log(error)
+    throw new Error('Error deleting car')
   }
 }
 
