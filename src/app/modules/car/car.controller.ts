@@ -47,6 +47,7 @@ const getAllCars = async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: 'Internal server error',
+      error: error,
     })
   }
 }
@@ -65,6 +66,7 @@ const getSingleCar = async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: 'Internal server error',
+      error: error,
     })
   }
 }
@@ -89,7 +91,7 @@ const deleteCarData = async (req: Request, res: Response) => {
     res.status(500).json({
       message: 'Error deleting car',
       success: false,
-      error: Error,
+      error: error,
     })
   }
 }

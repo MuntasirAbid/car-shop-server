@@ -1,8 +1,8 @@
 import globals from 'globals'
 import pluginJs from '@eslint/js'
 import tseslint from 'typescript-eslint'
-import eslintPrettier from 'eslint-plugin-prettier'
-import eslintPrettierConfig from 'eslint-config-prettier'
+// import eslintPrettier from 'eslint-plugin-prettier'
+// import eslintPrettierConfig from 'eslint-config-prettier'
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -21,6 +21,4 @@ export default [
       'no-undef': 'error',
     },
   },
-  eslintPrettierConfig, // ✅ Disables conflicting ESLint rules
-  eslintPrettier.configs.recommended,
 ]
