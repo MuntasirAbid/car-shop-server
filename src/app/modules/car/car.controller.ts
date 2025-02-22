@@ -1,11 +1,17 @@
 import { Request, Response } from 'express'
 import { CarServices } from './car.service'
+import carValidationSchema from './car.validation'
+import { ZodError } from 'zod'
 
 const createCar = async (req: Request, res: Response) => {
   try {
     const { car: carData } = req.body
 
-    const result = await CarServices.createCarIntoDB(carData)
+    //data validation using zod
+
+    const validationData = carValidationSchema.parse(carData)
+
+    const result = await CarServices.createCarIntoDB(validationData)
 
     res.status(200).json({
       success: true,
@@ -13,7 +19,18 @@ const createCar = async (req: Request, res: Response) => {
       data: result,
     })
   } catch (error) {
-    console.log(error)
+    if (error instanceof ZodError) {
+      // Extract validation errors
+      res.status(400).json({
+        success: false,
+        message: 'Validation failed',
+        errors: error.format(), // Structured Zod error
+      })
+    } else
+      res.status(500).json({
+        success: false,
+        message: 'Internal server error',
+      })
   }
 }
 
@@ -27,7 +44,10 @@ const getAllCars = async (req: Request, res: Response) => {
       data: result,
     })
   } catch (error) {
-    console.log(error)
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error',
+    })
   }
 }
 
@@ -42,7 +62,10 @@ const getSingleCar = async (req: Request, res: Response) => {
       data: result,
     })
   } catch (error) {
-    console.log(error)
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error',
+    })
   }
 }
 
