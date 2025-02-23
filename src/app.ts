@@ -9,6 +9,12 @@ const app: Application = express()
 app.use(express.json())
 app.use(cors())
 
+// Root route
+app.get('/', (req, res) => {
+  res.send('🚀 Server is running successfully on Vercel!')
+})
+
+//other routes
 app.use('/api', CarRoutes, OrderRoutes)
 
 export default app
